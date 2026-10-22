@@ -9,10 +9,10 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 ROOT = Path(__file__).resolve().parent
-HTML_FILE = ROOT / 'vietlab_nexus_v8_3_streamlit.html'
+HTML_FILE = ROOT / 'vietlab_nexus_v8_1_streamlit.html'
 
 st.set_page_config(
-    page_title='VIETLAB NEXUS V8.3 | Demo Streamlit',
+    page_title='VIETLAB NEXUS V8.1 | Demo Streamlit',
     page_icon='🧪',
     layout='wide',
     initial_sidebar_state='collapsed',
@@ -26,13 +26,13 @@ iframe{border:0!important}
 # Sidebar supplied by Streamlit is optional. VietLab also has its own collapsible
 # tool bar inside the embedded application.
 with st.sidebar:
-    st.markdown('### VIETLAB NEXUS V8.3')
+    st.markdown('### VIETLAB NEXUS V8.1')
     st.caption('Bản dùng thử từ GitHub · không chứa cơ sở dữ liệu chung')
     st.markdown('**Các tính năng:** Trang chủ thống kê · Bộ lọc ngày · Thu gọn menu · Excel / CSV / in PDF.')
     st.warning('Không nhập hồ sơ hoặc dữ liệu thử nghiệm thật. Dữ liệu HTML chỉ nằm trong trình duyệt.')
 
 if not HTML_FILE.is_file():
-    st.error('Thiếu file vietlab_nexus_v8_3_streamlit.html. Hãy tải lên đủ các tệp trong gói V8.3.')
+    st.error('Thiếu file vietlab_nexus_v8_3_streamlit.html. Hãy tải lên đủ các tệp trong gói V8.1.')
     st.stop()
 
 # Avoid shared st.cache_data for mutable state; HTML reads localStorage on the client.
