@@ -9,7 +9,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 ROOT = Path(__file__).resolve().parent
-HTML_FILE = ROOT / 'vietlab_nexus_v8_1_streamlit.html'
+HTML_FILE = ROOT / 'vietlab_nexus_v8_1_worklist.html'
 
 st.set_page_config(
     page_title='VIETLAB NEXUS V8.1 | Demo Streamlit',
