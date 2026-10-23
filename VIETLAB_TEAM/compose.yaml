@@ -1,0 +1,36 @@
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: vietlab
+      POSTGRES_USER: vl_owner
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set database owner password}
+    volumes:
+      - database:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vl_owner -d vietlab"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+  web:
+    build: .
+    environment:
+      APP_ENV: production
+      DATABASE_URL: ${DATABASE_URL:?Set restricted runtime database URL}
+      PUBLIC_ORIGIN: ${PUBLIC_ORIGIN:?Set HTTPS origin}
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS:?Set hostnames}
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop: [ALL]
+volumes:
+  database:
