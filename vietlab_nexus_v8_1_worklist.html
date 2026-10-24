@@ -5602,7 +5602,7 @@ function v94BindCatalog(el){
 
 function v84RenderResourceWorkspace(){var el=document.getElementById('page-resources');if(!el)return;
  if(!v8Allowed('resources')){el.innerHTML='';return;}
- var tabNames=(v84AllowedDept()==='NONE'?[]:[['chem','Hóa chất'],['equip','Thiết bị'],['methods','Thư viện Method'],['excel','chỉ tiêu'],['backlog','Chỉ tiêu chưa gán']]);
+ var tabNames=(v84AllowedDept()==='NONE'?[]:[['chem','Hóa chất'],['equip','Thiết bị'],['methods','Thư viện Method'],['excel','Chỉ tiêu'],['backlog','Chỉ tiêu chưa gán']]);
  if(v85CanViewSamples())tabNames.push(['samples','Kho mẫu hiện trường']);
  if(!tabNames.some(function(t){return t[0]===v84View.tab;})){v84View.tab=tabNames[0]?tabNames[0][0]:'samples';v84ResetForm();}if(v84View.tab==='excel'&&!v94Groups().some(function(g){return g.name===v94Ui.group;})){v94Ui.group=v94Groups()[0]?v94Groups()[0].name:'Hóa lý';}
  el.innerHTML='<div class="v84-shell"><div class="v84-head"><div><h1>Kho hóa chất, thiết bị, Method & mẫu theo phòng</h1><p>Quyền theo tài khoản · Hữu cơ · Hóa lý · Vi sinh · Kim loại · Quan trắc</p></div><span class="v84-pill">DEMO – dữ liệu chỉ ở trình duyệt</span></div>'+
